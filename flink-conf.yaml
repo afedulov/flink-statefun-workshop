@@ -56,12 +56,8 @@ taskmanager.numberOfTaskSlots: 1
 
 parallelism.default: 1
 
-# Set stateful functions payload serializer
-
-statefun.message.serializer: WITH_KRYO_PAYLOADS
-
 # Set the Flink UI port
 
-rest.bind-port: 8000
+rest.bind-port: 8001
 
 execution.checkpointing.interval: 10s

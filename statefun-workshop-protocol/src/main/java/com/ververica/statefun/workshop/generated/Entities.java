@@ -34,6 +34,46 @@ public final class Entities {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_org_apache_flink_statefun_examples_kafka_FraudScore_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_apache_flink_statefun_examples_kafka_ReportedFraud_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_apache_flink_statefun_examples_kafka_ReportedFraud_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_apache_flink_statefun_examples_kafka_ExpireFraud_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_apache_flink_statefun_examples_kafka_ExpireFraud_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_apache_flink_statefun_examples_kafka_QueryFraud_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_apache_flink_statefun_examples_kafka_QueryFraud_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_apache_flink_statefun_examples_kafka_MerchantScore_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_apache_flink_statefun_examples_kafka_MerchantScore_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_apache_flink_statefun_examples_kafka_QueryMerchantScore_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_apache_flink_statefun_examples_kafka_QueryMerchantScore_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_FunctionType_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_FunctionType_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_Address_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_Address_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -52,8 +92,19 @@ public final class Entities {
       "imestamp\022\020\n\010merchant\030\003 \001(\t\022\016\n\006amount\030\004 \001" +
       "(\005\":\n\rFeatureVector\022\022\n\nfraudCount\030\001 \001(\005\022" +
       "\025\n\rmerchantScore\030\002 \001(\005\"\033\n\nFraudScore\022\r\n\005" +
-      "score\030\001 \001(\005B-\n)com.ververica.statefun.wo" +
-      "rkshop.generatedP\001b\006proto3"
+      "score\030\001 \001(\005\"\036\n\rReportedFraud\022\r\n\005count\030\001 " +
+      "\001(\005\"\r\n\013ExpireFraud\"\014\n\nQueryFraud\"-\n\rMerc" +
+      "hantScore\022\r\n\005score\030\001 \001(\005\022\r\n\005error\030\002 \001(\010\"" +
+      "\024\n\022QueryMerchantScore\"\251\002\n\020MerchantMetada" +
+      "ta\022S\n\007address\030\001 \001(\0132B.org.apache.flink.s" +
+      "tatefun.examples.kafka.MerchantMetadata." +
+      "Address\022\031\n\021remainingAttempts\030\002 \001(\005\032/\n\014Fu" +
+      "nctionType\022\021\n\tnamespace\030\001 \001(\t\022\014\n\004name\030\002 " +
+      "\001(\t\032t\n\007Address\022\n\n\002id\030\001 \001(\t\022]\n\014functionTy" +
+      "pe\030\002 \001(\0132G.org.apache.flink.statefun.exa" +
+      "mples.kafka.MerchantMetadata.FunctionTyp" +
+      "eB-\n)com.ververica.statefun.workshop.gen" +
+      "eratedP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -92,6 +143,54 @@ public final class Entities {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_org_apache_flink_statefun_examples_kafka_FraudScore_descriptor,
         new java.lang.String[] { "Score", });
+    internal_static_org_apache_flink_statefun_examples_kafka_ReportedFraud_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_org_apache_flink_statefun_examples_kafka_ReportedFraud_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_apache_flink_statefun_examples_kafka_ReportedFraud_descriptor,
+        new java.lang.String[] { "Count", });
+    internal_static_org_apache_flink_statefun_examples_kafka_ExpireFraud_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_org_apache_flink_statefun_examples_kafka_ExpireFraud_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_apache_flink_statefun_examples_kafka_ExpireFraud_descriptor,
+        new java.lang.String[] { });
+    internal_static_org_apache_flink_statefun_examples_kafka_QueryFraud_descriptor =
+      getDescriptor().getMessageTypes().get(6);
+    internal_static_org_apache_flink_statefun_examples_kafka_QueryFraud_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_apache_flink_statefun_examples_kafka_QueryFraud_descriptor,
+        new java.lang.String[] { });
+    internal_static_org_apache_flink_statefun_examples_kafka_MerchantScore_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_org_apache_flink_statefun_examples_kafka_MerchantScore_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_apache_flink_statefun_examples_kafka_MerchantScore_descriptor,
+        new java.lang.String[] { "Score", "Error", });
+    internal_static_org_apache_flink_statefun_examples_kafka_QueryMerchantScore_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_org_apache_flink_statefun_examples_kafka_QueryMerchantScore_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_apache_flink_statefun_examples_kafka_QueryMerchantScore_descriptor,
+        new java.lang.String[] { });
+    internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_descriptor,
+        new java.lang.String[] { "Address", "RemainingAttempts", });
+    internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_FunctionType_descriptor =
+      internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_descriptor.getNestedTypes().get(0);
+    internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_FunctionType_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_FunctionType_descriptor,
+        new java.lang.String[] { "Namespace", "Name", });
+    internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_Address_descriptor =
+      internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_descriptor.getNestedTypes().get(1);
+    internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_Address_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_org_apache_flink_statefun_examples_kafka_MerchantMetadata_Address_descriptor,
+        new java.lang.String[] { "Id", "FunctionType", });
     com.google.protobuf.TimestampProto.getDescriptor();
   }
 
