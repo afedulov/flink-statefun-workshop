@@ -100,3 +100,11 @@ services:
     depends_on:
       - kafka-broker
 
+  ###############################################################
+  #    Statefun Solution
+  ###############################################################
+
+  solution:
+    image: solution:latest
+    depends_on:
+      - kafka-broker
