@@ -246,5 +246,4 @@ app.add_routes([web.post('/statefun', handle)])
 if __name__ == '__main__':
     logging.basicConfig(format='%(asctime)s %(message)s')
     logger.setLevel(logging.DEBUG)
-    logger.info("LOGGING SET UP")
-    web.run_app(app, port=8101)
+    web.run_app(app, port=8100)
