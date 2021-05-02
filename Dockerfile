@@ -16,15 +16,6 @@
 
 FROM python:3.9-buster
 
-# RUN mkdir -p /app
-# WORKDIR /app
-
-# COPY requirements.txt /app
-# RUN pip install -r requirements.txt
-
-# COPY event-generator.py /app
-# CMD ["python3", "/app/event-generator.py"]
-
 RUN mkdir -p /statefun
 COPY workshop /statefun/workshop
 
