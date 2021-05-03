@@ -83,13 +83,13 @@ services:
   # Forward a port 8100 from the host's machine
   ###############################################################
 
-  host-machine:
-    image: qoomon/docker-host@sha256:e0f021dd77c7c26d37b825ab2cbf73cd0a77ca993417da80a14192cb041937b0
-    cap_add: [ 'NET_ADMIN', 'NET_RAW' ]
-    mem_limit: 8M
-    restart: on-failure
-    environment:
-      PORTS: 8100
+  # host-machine:
+  #   image: qoomon/docker-host@sha256:e0f021dd77c7c26d37b825ab2cbf73cd0a77ca993417da80a14192cb041937b0
+  #   cap_add: [ 'NET_ADMIN', 'NET_RAW' ]
+  #   mem_limit: 8M
+  #   restart: on-failure
+  #   environment:
+  #     PORTS: 8100
 
   ###############################################################
   #    Simple Kafka JSON producer to simulate ingress events

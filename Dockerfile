@@ -24,4 +24,5 @@ COPY README.md /statefun
 
 WORKDIR /statefun
 RUN pip install .
-CMD ["python", "-m", "workshop"]
+# CMD ["python", "-m", "workshop"]
+CMD ["python", "workshop/__main__.py"]
