@@ -104,7 +104,7 @@ services:
   #    Statefun Solution
   ###############################################################
 
-  solution:
-    image: solution:latest
+  transaction-manager:
+    image: us.gcr.io/da-fe-212612/transaction-manager:latest 
     depends_on:
       - kafka-broker

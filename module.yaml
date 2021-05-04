@@ -20,12 +20,11 @@ module:
   spec:
     endpoints:
       - endpoint:
-         meta:
-           kind: http
-         spec:
-           functions: com.ververica.fn/*
-          #  urlPathTemplate: http://host-machine:8100/statefun
-           urlPathTemplate: http://solution:8100/statefun
+          meta:
+            kind: http
+          spec:
+            functions: com.ververica.fn/*
+            urlPathTemplate: http://transaction-manager:8100/statefun
       - endpoint:
           meta:
             kind: http
