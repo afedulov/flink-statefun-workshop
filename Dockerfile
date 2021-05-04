@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM python:3.9-buster
+FROM python:3.9-slim-buster
 
 RUN mkdir -p /statefun
 COPY workshop /statefun/workshop
