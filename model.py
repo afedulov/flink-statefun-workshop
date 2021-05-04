@@ -32,7 +32,7 @@ functions = StatefulFunctions()
 FeatureVector = make_json_type('com.ververica.types/feature-vector')
 
 
-@functions.bind('com.ververica.ds/model')
+@functions.bind('com.ververica.fn/model')
 async def scorer(ctx: Context, message: Message):
     """
     A complex machine learning model that detects fraudulent transactions
