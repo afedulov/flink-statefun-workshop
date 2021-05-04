@@ -51,7 +51,7 @@ ConfirmFraud = make_json_type('com.ververica.types/confirm-fraud')
 # by the Data Science team. It accepts a
 # FeatureVector and returns an integer score.
 #####################################################
-ModelType = 'com.ververica.ds/model'
+ModelType = 'com.ververica.fn/model'
 
 
 @functions.bind(
