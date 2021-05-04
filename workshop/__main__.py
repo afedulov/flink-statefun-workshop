@@ -68,7 +68,6 @@ async def fraud_count(ctx: Context, message: Message):
     2) 'expire': After 30 minutes, the function will receive an expiration message. At this time it
     will decrement its internal count.
 
-    3) 'query': The message sent by the transaction manager when requesting the curent count.
     """
     if message.is_type(ConfirmFraud):
         logger.info(f"Confirming fraud for account {ctx.address.id}")
@@ -98,48 +97,10 @@ async def fraud_count(ctx: Context, message: Message):
         logger.warning(f"Unknown {message.value_typename()}")
 
 
-def merchant_scorer(client=third_party_api_client):
-    """
-    This function queries a 3rd party API to retrieve a trustworthiness
-    score for the merchant. The score will be stored in state, as a sort of
-    cache, to reduce expensive API calls. The state is set to expire 1 hour
-    after write to prevent the use of stale data.
-
-    Unlike other stateful functions, this returns a function that is manually
-    registered with the RequestReply handler. Doing so allows supporting dependency
-    injection of the API client.
-    """
-    async def call(ctx: Context, message: Message):
-        operation = message.as_string()
-        if operation == 'query':
-            logger.debug(f"Retrieving merchant score for transaction: {ctx.caller.id}")
-            if not ctx.storage.score:
-                logger.debug(f"Score for merchant {ctx.address.id} is not in state, querying external service")
-                score = await client(ctx.address.id)
-                ctx.storage.score = score
-
-            ctx.send(message_builder(
-                target_typename=ctx.caller.typename,
-                target_id=ctx.caller.id,
-                int_value=ctx.storage.score))
-
-    return call
-
-
-#####################################################
-# Manually register the function with the handler
-# supplied with the production API client.
-#####################################################
-functions.register('com.ververica.fn/merchant',
-                   merchant_scorer(),
-                   [ValueSpec('score', IntType, expire_after_write=timedelta(hours=1))])
-
-
 @functions.bind(
     'com.ververica.fn/transaction-manager',
     [ValueSpec('transaction', Transaction.TYPE),
-     ValueSpec('fraud_count', IntType),
-     ValueSpec('merchant_score', IntType)])
+     ValueSpec('fraud_count', IntType)])
 async def transaction_manager(ctx: Context, message: Message):
     """
     The transaction manager coordinates the processes of building
@@ -164,45 +125,13 @@ async def transaction_manager(ctx: Context, message: Message):
             target_id=transaction.account,
             str_value='query'))
 
-        ctx.send(message_builder(
-            target_typename='com.ververica.fn/merchant',
-            target_id=transaction.merchant,
-            str_value='query'))
-
     elif ctx.caller.typename == 'com.ververica.fn/counter':
-        if ctx.storage.merchant_score is None:
-            # The merchant score has not yet been received.
-            # Store the count in state for latter.
-            logger.debug(f"Waiting on merchant score for transaction: {ctx.address.id}")
-            ctx.storage.fraud_count = message.as_int()
-        else:
-            # All features are available. Send the
-            # feature vector to the model.
+            # Send the feature vector to the model.
             logger.debug(f"Sending feature vector for transaction: {ctx.address.id} to model")
             ctx.send(message_builder(
                 target_typename=ModelType,
                 target_id=ctx.storage.transaction.account,
                 value=FeatureVector(
-                    message.as_int(),
-                    ctx.storage.merchant_score,
-                    ctx.storage.transaction.amount),
-                value_type=FeatureVector.TYPE))
-
-    elif ctx.caller.typename == 'com.ververica.fn/merchant':
-        if ctx.storage.fraud_count is None:
-            logger.debug(f"Waiting on fraud count for transaction: {ctx.address.id}")
-            # The fraud count has not yet been received.
-            # Store the score in state for latter.
-            ctx.storage.merchant_score = message.as_int()
-        else:
-            # All features are available. Send the
-            # feature vector to the model.
-            logger.debug(f"Sending feature vector for transaction: {ctx.address.id} to model")
-            ctx.send(message_builder(
-                target_typename=ModelType,
-                target_id=ctx.storage.transaction.account,
-                value=FeatureVector(
-                    ctx.storage.fraud_count,
                     message.as_int(),
                     ctx.storage.transaction.amount),
                 value_type=FeatureVector.TYPE))
@@ -224,7 +153,6 @@ async def transaction_manager(ctx: Context, message: Message):
 
         del ctx.storage.transaction
         del ctx.storage.fraud_count
-        del ctx.storage.merchant_score
 
 
 ####################

@@ -54,7 +54,6 @@ class FeatureVector:
         serialize_fn=lambda vector: json.dumps(vector.__dict__).encode(),
         deserialize_fn=lambda data: FeatureVector(**json.loads(data)))
 
-    def __init__(self, count: int, score: int, amount: int):
+    def __init__(self, count: int, amount: int):
         self.count = count
-        self.score = score
         self.amount = amount
