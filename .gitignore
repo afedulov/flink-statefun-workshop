@@ -1,5 +1,7 @@
 # Compiled class file
 *.class
+__pycache__/
+*.pyc
 
 # Log file
 *.log
@@ -41,3 +43,6 @@ build-linter
 release/
 checkpoint-dir/
 savepoint-dir/
+
+# IDE
+.vscode
